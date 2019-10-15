@@ -53,7 +53,7 @@ namespace ORM
 
             foreach (DataRow DR in DT.Rows)
             {
-                EntityPersona persona = new EntityPersona(DR[0].ToString(), DR[2].ToString(), DR[2].ToString());
+                EntityPersona persona = new EntityPersona(DR[0].ToString(), DR[1].ToString(), DR[2].ToString());
                 ListaEpersonas.Add(persona);
             }
             return ListaEpersonas;
