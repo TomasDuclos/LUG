@@ -23,7 +23,7 @@ namespace DAL
             Adaptador.InsertCommand = CommanBuider.GetInsertCommand();
             Adaptador.DeleteCommand = CommanBuider.GetDeleteCommand();
             Adaptador.UpdateCommand = CommanBuider.GetUpdateCommand();
-
+                       
         }
 
         public DataTable RetornarTablaVacia(string NombreTabla)
