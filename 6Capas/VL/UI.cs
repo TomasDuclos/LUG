@@ -43,7 +43,6 @@ namespace VL
         {
             try
             {
-                
                 controlerui.Baja();
                 controlerui.ConsultaTodos();
             }
