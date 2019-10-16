@@ -41,7 +41,8 @@ namespace CONTROLER
 
         public void Baja()
         {
-            throw new NotImplementedException();
+            EntityPersona PersonaEntity = (UiForm.Controls["dataGridView1"] as DataGridView).SelectedRows[0].DataBoundItem as EntityPersona;
+            PersonaBll.Baja(PersonaEntity);
         }
 
         public void Consulta()

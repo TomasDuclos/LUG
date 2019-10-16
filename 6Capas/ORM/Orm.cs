@@ -38,7 +38,13 @@ namespace ORM
 
         public void Baja(EntityPersona pObject)
         {
-            throw new NotImplementedException();
+            DT = DalServicio.RetornarTablaVacia("Persona");
+            DataRow DR = DT.NewRow();
+            //Lo que hago es crear una nueva row en la tabla y la apunto con DR
+            object[] NuevaFila = { pObject.Dni, pObject.Nombre, pObject.Apellido }; 
+            DR.ItemArray = NuevaFila;//le digo que es un array
+            DT.Rows.Add(DR);//paso dr
+            DalServicio.BajaEnBd(DT);
         }
 
         public void Consulta(EntityPersona pObject)

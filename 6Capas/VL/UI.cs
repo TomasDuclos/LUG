@@ -51,13 +51,13 @@ namespace VL
                 textBoxErrores.Clear();
                 textBoxErrores.Text = ex.Message;
             }
-        }
+          }
 
         private void buttonMODIFICACION_Click(object sender, EventArgs e)
         {
             try
             {
-                controlerui.Alta();
+
                 controlerui.ConsultaTodos();
             }
             catch (Exception ex)
@@ -71,7 +71,6 @@ namespace VL
         {
             try
             {
-                controlerui.Alta();
                 controlerui.ConsultaTodos();
             }
             catch (Exception ex)

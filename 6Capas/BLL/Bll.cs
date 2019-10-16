@@ -32,7 +32,7 @@ namespace BLL
 
         public void Baja(EntityPersona pObject)
         {
-            throw new NotImplementedException();
+            PersonaOrm.Baja(pObject);
         }
 
         public void Consulta(EntityPersona pObject)

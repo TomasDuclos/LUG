@@ -23,7 +23,9 @@ namespace DAL
             Adaptador.InsertCommand = CommanBuider.GetInsertCommand();
             Adaptador.DeleteCommand = CommanBuider.GetDeleteCommand();
             Adaptador.UpdateCommand = CommanBuider.GetUpdateCommand();
-                       
+            Adaptador.Fill(DS, "Persona");
+            DataColumn[] C = { DS.Tables[0].Columns[0] };
+            DS.Tables[0].PrimaryKey = C;
         }
 
         public DataTable RetornarTablaVacia(string NombreTabla)
@@ -45,6 +47,12 @@ namespace DAL
             Adaptador.Fill(DT);
 
             return DT;
+        }
+        public void BajaEnBd(DataTable dt)
+        {
+            DataRow dr = dt.Rows[0];
+            DS.Tables["Persona"].Rows.Find(dr[0]).Delete();
+            GuardarEnBd(DS.Tables["Persona"]);
         }
     }
 }
