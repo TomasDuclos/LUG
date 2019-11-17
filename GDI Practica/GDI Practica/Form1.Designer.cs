@@ -44,7 +44,7 @@
             // 
             // buttonCirculo
             // 
-            this.buttonCirculo.Location = new System.Drawing.Point(590, 12);
+            this.buttonCirculo.Location = new System.Drawing.Point(661, 428);
             this.buttonCirculo.Name = "buttonCirculo";
             this.buttonCirculo.Size = new System.Drawing.Size(75, 23);
             this.buttonCirculo.TabIndex = 0;
@@ -55,7 +55,7 @@
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(581, 41);
+            this.radioButton1.Location = new System.Drawing.Point(652, 457);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(77, 21);
             this.radioButton1.TabIndex = 1;
@@ -66,7 +66,7 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(581, 68);
+            this.radioButton2.Location = new System.Drawing.Point(652, 484);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(87, 21);
             this.radioButton2.TabIndex = 2;

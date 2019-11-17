@@ -157,24 +157,24 @@ namespace GDI_Practica
         public void GraficarBarra(Form formulario)
         {
             Graphics G = formulario.CreateGraphics();
-            G.Clear(Color.White);
+            SolidBrush sb = new SolidBrush(Color.White);
             int i = 500;
+            //rectangulo blanco
+            G.FillRectangle(sb, i,10, 45*LVN.Count, 300);
+
+
+
             foreach (VistaNumeros vn in LVN)
             {
                 if (vn.Apariciones!=0)
                 {
                     float height= (float)vn.Porcentage * 3;
-                    float y = 100+(300-height);
+                    float y = 10+(300-height);
                     G.FillRectangle(vn.SB, i, y, 40,height) ;
                     
                 }
                 i += 45;
             }
-                //
-
-
-
-
 
         }
 
