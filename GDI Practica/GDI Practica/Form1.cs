@@ -90,13 +90,13 @@ namespace GDI_Practica
             for (int i = 0; i < 4; i++)
             {
                 VistaNumeros Vnum = new VistaNumeros();
-                Random random = new Random();
+                Random random = new Random(DateTime.Now.Millisecond);
                 for (int j = 0; j < 100000; j++)
                 {
                     a=random.Next(0, 255);
-                }
+                }//si le sacan el for les da 3 colores casi iguales jajajajja nose porque
 
-                    SolidBrush sb = new SolidBrush(Color.FromArgb(a, 25*i, 5*i));
+                SolidBrush sb = new SolidBrush(Color.FromArgb(a, random.Next(0, 255), random.Next(0, 255)));
                 Vnum.SB = sb;
                 Vnum.Numero = i;
                 LVN.Add(Vnum);
@@ -153,8 +153,18 @@ namespace GDI_Practica
                 }
             }
         }
-        public void GraficarBarra()
+        public void GraficarBarra(Form formulario, int tiradas)
         {
+            Graphics G = formulario.CreateGraphics();
+            int CantidadBarras = LVN.Count();
+
+            for (int i=0;i<CantidadBarras ;i++)
+            {
+                //G.FillRectangle(,,,,,);
+            }
+
+
+
 
         }
 
