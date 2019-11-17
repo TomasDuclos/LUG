@@ -160,24 +160,26 @@ namespace GDI_Practica
             SolidBrush sb = new SolidBrush(Color.White);
             int i = 500;
             //rectangulo blanco
-            G.FillRectangle(sb, i,10, 45*LVN.Count, 300);
+            G.FillRectangle(sb, i,10, 45*LVN.Count, 320);
 
 
 
             foreach (VistaNumeros vn in LVN)
             {
-                if (vn.Apariciones!=0)
+                if (vn.Apariciones != 0)
                 {
-                    float height= (float)vn.Porcentage * 3;
-                    float y = 10+(300-height);
-                    G.FillRectangle(vn.SB, i, y, 40,height) ;
-                    
+                    float height = (float)vn.Porcentage * 3;
+                    float y = 10 + (300 - height);
+                    G.FillRectangle(vn.SB, i, y, 40, height);
+
+                    Font f = new Font(formulario.Font, FontStyle.Italic);
+                    string porcentajestring = Math.Round((vn.Porcentage), 2).ToString()+ "%";
+                    G.DrawString(porcentajestring, f, vn.SB, i , 310);
+                    i += 45;
                 }
-                i += 45;
             }
 
         }
-
 
     }
 }
