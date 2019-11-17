@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2003
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlUsuraioForm", "ControlUsuraioForm\ControlUsuraioForm.csproj", "{14B68F3F-0CE4-4E66-90B2-3F386BA3BDFB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{14B68F3F-0CE4-4E66-90B2-3F386BA3BDFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14B68F3F-0CE4-4E66-90B2-3F386BA3BDFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14B68F3F-0CE4-4E66-90B2-3F386BA3BDFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14B68F3F-0CE4-4E66-90B2-3F386BA3BDFB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6DC42F02-FC90-4E59-B9F2-14E00910589C}
+	EndGlobalSection
+EndGlobal

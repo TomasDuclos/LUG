@@ -18,5 +18,12 @@ namespace ENTITIES
         public string Dni { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
+
+        public object[] GetArrayPersona()
+        {
+            object[] PersonaArray = { Dni,Nombre,Apellido};
+
+            return PersonaArray;
+        }
     }
 }

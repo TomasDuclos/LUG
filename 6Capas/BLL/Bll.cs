@@ -45,9 +45,9 @@ namespace BLL
             return PersonaOrm.ConsultaTodos();
         }
 
-        public void Modificacion(EntityPersona pObject)
+        public void Modificacion(EntityPersona pObject, EntityPersona pObject2)
         {
-            throw new NotImplementedException();
+            PersonaOrm.Modificacion(pObject, pObject2);
         }
     }
 }

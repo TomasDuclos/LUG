@@ -15,6 +15,7 @@ namespace CONTROLER
     {
         Form UiForm;
         BllPersona PersonaBll;
+        int ClickVeces=0;
 
         public ControlerUi(Form uiForm)
         {
@@ -58,7 +59,27 @@ namespace CONTROLER
 
         public void Modificacion()
         {
-            throw new NotImplementedException();
+            try
+            {
+                EntityPersona PersonaEntitySeleccionada = (UiForm.Controls["dataGridView1"] as DataGridView).SelectedRows[0].DataBoundItem as EntityPersona;
+                EntityPersona PersonaEntityModificada = new EntityPersona(
+                UiForm.Controls["textBoxDni"].Text,
+                UiForm.Controls["textBoxNombre"].Text,
+                UiForm.Controls["textBoxApellido"].Text);
+                
+                PersonaBll.Modificacion(PersonaEntitySeleccionada, PersonaEntityModificada);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public void CargarTextBox()
+        {
+            EntityPersona PersonaEntitySeleccionada = (UiForm.Controls["dataGridView1"] as DataGridView).SelectedRows[0].DataBoundItem as EntityPersona;
+            UiForm.Controls["textBoxDni"].Text = PersonaEntitySeleccionada.Dni;
+            UiForm.Controls["textBoxNombre"].Text = PersonaEntitySeleccionada.Nombre;
+            UiForm.Controls["textBoxApellido"].Text = PersonaEntitySeleccionada.Apellido;
         }
         public void MostrarEnDGV()
         {

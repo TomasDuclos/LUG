@@ -37,7 +37,9 @@
             this.buttonBaja = new System.Windows.Forms.Button();
             this.buttonMODIFICACION = new System.Windows.Forms.Button();
             this.button3CONSULTA = new System.Windows.Forms.Button();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -51,6 +53,7 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(478, 258);
             this.dataGridView1.TabIndex = 9;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // textBoxApellido
             // 
@@ -129,11 +132,24 @@
             this.button3CONSULTA.UseVisualStyleBackColor = true;
             this.button3CONSULTA.Click += new System.EventHandler(this.button3CONSULTA_Click);
             // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(525, 138);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
+            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView2.Size = new System.Drawing.Size(478, 258);
+            this.dataGridView2.TabIndex = 14;
+            // 
             // UI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(683, 469);
+            this.ClientSize = new System.Drawing.Size(1034, 469);
+            this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.button3CONSULTA);
             this.Controls.Add(this.buttonMODIFICACION);
             this.Controls.Add(this.buttonBaja);
@@ -147,6 +163,7 @@
             this.Text = "UI";
             this.Load += new System.EventHandler(this.UI_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -163,5 +180,6 @@
         private System.Windows.Forms.Button buttonBaja;
         private System.Windows.Forms.Button buttonMODIFICACION;
         private System.Windows.Forms.Button button3CONSULTA;
+        private System.Windows.Forms.DataGridView dataGridView2;
     }
 }

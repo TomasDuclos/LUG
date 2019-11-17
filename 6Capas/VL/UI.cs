@@ -57,7 +57,7 @@ namespace VL
         {
             try
             {
-
+                controlerui.Modificacion();
                 controlerui.ConsultaTodos();
             }
             catch (Exception ex)
@@ -78,6 +78,11 @@ namespace VL
                 textBoxErrores.Clear();
                 textBoxErrores.Text = ex.Message;
             }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            controlerui.CargarTextBox();
         }
     }
 }

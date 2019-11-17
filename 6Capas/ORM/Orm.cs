@@ -65,9 +65,17 @@ namespace ORM
             return ListaEpersonas;
         }
 
-        public void Modificacion(EntityPersona pObject)
+        public void Modificacion(EntityPersona pObject, EntityPersona pObject2)
         {
-            throw new NotImplementedException();
+            DataTable DT = DalServicio.LeerTabla("select * from Persona");
+            DataRow DR = DT.NewRow();
+            DR.ItemArray= pObject.GetArrayPersona();
+            DT.Rows.Add(DR);
+            DataRow DRperModificada = DT.NewRow();
+            DRperModificada.ItemArray = pObject2.GetArrayPersona();
+            DT.Rows.Add(DRperModificada);
+
+            DAL.
         }
     }
 }
