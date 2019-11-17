@@ -71,6 +71,7 @@ namespace GDI_Practica
             Contador++;
             Mostrar(GN.RandomNumeros(Contador));
             GN.GraficarTorta(this,Contador);
+            GN.GraficarBarra(this);
         }
     }
     public class VistaNumeros
@@ -153,15 +154,24 @@ namespace GDI_Practica
                 }
             }
         }
-        public void GraficarBarra(Form formulario, int tiradas)
+        public void GraficarBarra(Form formulario)
         {
             Graphics G = formulario.CreateGraphics();
-            int CantidadBarras = LVN.Count();
-
-            for (int i=0;i<CantidadBarras ;i++)
+            G.Clear(Color.White);
+            int i = 500;
+            foreach (VistaNumeros vn in LVN)
             {
-                //G.FillRectangle(,,,,,);
+                if (vn.Apariciones!=0)
+                {
+                    float height= (float)vn.Porcentage * 3;
+                    float y = 100+(300-height);
+                    G.FillRectangle(vn.SB, i, y, 40,height) ;
+                    
+                }
+                i += 45;
             }
+                //
+
 
 
 
