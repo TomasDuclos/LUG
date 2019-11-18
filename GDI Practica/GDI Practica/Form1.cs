@@ -109,7 +109,7 @@ namespace GDI_Practica
         public List<VistaNumeros> RandomNumeros(int cont)
         {
             Random a = new Random();
-            int num = a.Next(0, 4);
+            int num = a.Next(0, 9);
             calcularPorcentaje(num, cont);
             return LVN;
         }
