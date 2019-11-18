@@ -22,5 +22,14 @@ namespace Entidades
         public decimal Precio { get; set; }
         public DateTime FechaPublicacion { get; set; }
         public DateTime FechaVenta { get; set; }
+
+        public object[] getArrayInmueble()
+        {
+            object[] arrayinmueble = { Id, Direccion,
+                     Precio,FechaPublicacion,FechaVenta};
+                     
+            return arrayinmueble;
+        }
+
     }
 }

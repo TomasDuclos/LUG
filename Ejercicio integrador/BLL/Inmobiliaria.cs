@@ -12,14 +12,14 @@ namespace BLL
     {
         public List<Inmueble> LI { get; set; }
 
-        AccesDB dbmapper;
+        AccesDB accesDB;
 
         //ABMC.CT
         public void AltaInmueble(Inmueble inmueble)
         {
             try
             {
-                dbmapper.AltaInmueble(inmueble);
+                accesDB.AltaInmueble(inmueble);
             }
             catch (Exception)
             {
@@ -29,7 +29,7 @@ namespace BLL
         {
             try
             {
-
+                accesDB.BajaInmueble(inmueble);
             }
             catch (Exception)
             {
@@ -39,19 +39,19 @@ namespace BLL
         {
             try
             {
-
+                accesDB.ModificacionInmueble(inmueble);
             }
             catch (Exception)
             {
             }
         }
 
-        public void ConsultaInmueble(Inmueble inmueble)
+        public void ConsultaInmueble(string texto)
         {
             try
             {
                 //List<Inmueble> a=new List<Inmueble>();
-
+                accesDB.ConsultaInmueble(texto);
             }
             catch (Exception)
             {

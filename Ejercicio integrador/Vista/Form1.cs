@@ -32,7 +32,7 @@ namespace Vista
             try
             {
                 Inmueble nuyevo = new Inmueble();
-          
+                
                 inmobiliaria.AltaInmueble()
             }
             catch (Exception)

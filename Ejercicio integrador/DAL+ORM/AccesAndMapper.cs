@@ -34,26 +34,18 @@ namespace DAL_ORM
         {
             Adapter.Update(DS.Tables[0]);
         }
-        //Baja en Bd
-        public void BajaBd()
-        {
-            DataRow dr = DS.Tables[0].Rows[0];
-            DS.Tables
-        }
-        //leer tabla
+
 
         //ABMC.CT
         public void AltaInmueble(Inmueble inmueble)
         {
             try
             {
-                // llega objeto crea table manda la table a que se guarde
-                object[] o = { inmueble.Id, inmueble };
+                // llega objeto crea table manda la table a que se guarde         
                 DataRow DR =DS.Tables[0].NewRow();
-                DR.ItemArray = o;
+                DR.ItemArray = inmueble.getArrayInmueble();
                 DS.Tables[0].Rows.Add(DR);
                 GuardarBd();
-
             }
             catch (Exception)
             {
@@ -64,6 +56,8 @@ namespace DAL_ORM
             try
             {
                 //tengo el objeto a dar de baja, creo la table y la envio a que le den de baja
+                DS.Tables[0].Rows.Find(inmueble.Id).Delete();
+                GuardarBd();
             }
             catch (Exception)
             {
@@ -73,14 +67,19 @@ namespace DAL_ORM
         {
             try
             {
-
+                DataRow DR=DS.Tables[0].Rows.Find(inmueble.Id);
+                DR[1] =inmueble.Direccion;
+                DR[2] = inmueble.Precio;
+                DR[3] = inmueble.FechaPublicacion;
+                DR[4] = inmueble.FechaVenta;
+                GuardarBd();
             }
             catch (Exception)
             {
             }
         }
 
-        public void ConsultaInmueble(Inmueble inmueble)
+        public void ConsultaInmueble(string texto)
         {
             try
             {
