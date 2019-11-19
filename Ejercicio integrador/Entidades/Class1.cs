@@ -9,7 +9,7 @@ namespace Entidades
     public class Inmueble
     {
 
-        public Inmueble(string id, string direccion, decimal precio, DateTime fechaPublicacion, DateTime fechaVenta)
+        public Inmueble(string id, string direccion, decimal precio, DateTime fechaPublicacion, DateTime? fechaVenta)
         {
             Id = id;
             Direccion = direccion;
@@ -22,7 +22,7 @@ namespace Entidades
         public string Direccion { get; set; }
         public decimal Precio { get; set; }
         public DateTime FechaPublicacion { get; set; }
-        public DateTime FechaVenta { get; set; }
+        public DateTime? FechaVenta { get; set; }
 
         public object[] getArrayInmueble()
         {

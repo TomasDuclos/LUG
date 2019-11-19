@@ -25,6 +25,7 @@ namespace BLL
             try
             {
                 accesDB.AltaInmueble(inmueble);
+
             }
             catch (Exception)
             {

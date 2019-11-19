@@ -82,10 +82,18 @@ namespace Vista
                 if (pattern.IsMatch(textBoxId.Text))
                 {
                     string id = textBoxId.Text;/////////////codigo si esta bien
+                    DateTime? Fv = null;
+                    if (TXTBOXFV.Text != "")
+                    {
+                        Fv = DateTime.Parse(TXTBOXFV.Text);
+                    }
                     Inmueble inmueble = new Inmueble(id,textBoxDIR.Text, decimal.Parse(textBoxprecio.Text),
-                        DateTime.Parse(textBoxFP.Text), DateTime.Parse(TXTBOXFV.Text));
+                        DateTime.Parse(textBoxFP.Text), Fv);
+
+                   // inmueble.FechaVenta = Fv;
 
                     inmobiliaria.AltaInmueble(inmueble);
+                    MostrarDGVinmuebles();
                 }
                 else
                 {
