@@ -28,7 +28,6 @@ namespace ORM
                 object[] O = {pObject.Dni,pObject.Nombre,pObject.Apellido };
                 DT.Rows.Add(O);
                 DalServicio.GuardarEnBd(DT);
-
             }
             catch (Exception)
             {

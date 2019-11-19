@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Entidades;
 using System.Data.SqlClient;
 using System.Data;
+using System.Windows.Forms;
 
 namespace DAL_ORM
 {
@@ -24,10 +25,12 @@ namespace DAL_ORM
             Adapter.InsertCommand = ComandBuilder.GetInsertCommand();
             Adapter.DeleteCommand = ComandBuilder.GetDeleteCommand();
             Adapter.UpdateCommand = ComandBuilder.GetUpdateCommand();
-            Adapter.Fill(DS, "Inmueble");
+            Adapter.FillSchema(DS, SchemaType.Mapped);
+            //con el fillSchema no hace falta poner la ky a mano
 
-            DataColumn[] column = { DS.Tables[0].Columns[0] };
-            DS.Tables[0].PrimaryKey = column;
+            //DataColumn[] column = { DS.Tables[0].Columns[0] };
+            //DS.Tables[0].PrimaryKey = column;
+           
         }
         //Guardar en Bd
         public void GuardarBd()
@@ -47,8 +50,9 @@ namespace DAL_ORM
                 DS.Tables[0].Rows.Add(DR);
                 GuardarBd();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                MessageBox.Show(ex.Message);
             }
         }
         public void BajaInmueble(Inmueble inmueble)
@@ -79,17 +83,36 @@ namespace DAL_ORM
             }
         }
 
-        public void ConsultaInmueble(string texto)
+        public void ConsultaInmueble(string Query)
         {
             try
             {
-                //List<Inmueble> a=new List<Inmueble>();
-
             }
             catch (Exception)
             {
             }
-        }
 
+        }
+        public List<Inmueble> GetListaInmueble()
+        {
+            List<Inmueble> LInmueble = new List<Inmueble>();
+            try
+            {
+                //Adapter.SelectCommand.CommandText="select * from Inmueble";
+                Adapter.Fill(DS.Tables[0]);
+                foreach (DataRow dr in DS.Tables[0].Rows)
+                {
+                    Inmueble inmueble = new Inmueble(
+                        dr[0].ToString(), dr[1].ToString(),
+                        (decimal)dr[2], (DateTime)dr[3], (DateTime)dr[4]);
+
+                    LInmueble.Add(inmueble);
+                }
+            }
+            catch (Exception)
+            {
+            }
+            return LInmueble;
+        }
     }
 }

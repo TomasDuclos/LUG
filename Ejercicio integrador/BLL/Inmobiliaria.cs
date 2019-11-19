@@ -14,6 +14,11 @@ namespace BLL
 
         AccesDB accesDB;
 
+        public Inmobiliaria()
+        {
+            accesDB = new AccesDB();
+        }
+
         //ABMC.CT
         public void AltaInmueble(Inmueble inmueble)
         {
@@ -58,6 +63,17 @@ namespace BLL
             }
         }
 
-
+        public List<Inmueble> CargarListaInmueble()
+        {
+            LI = new List<Inmueble>();
+            try
+            {
+                LI = accesDB.GetListaInmueble();
+            }
+            catch (Exception)
+            {
+            }
+            return LI;
+        }
     }
 }

@@ -8,6 +8,7 @@ namespace Entidades
 {
     public class Inmueble
     {
+
         public Inmueble(string id, string direccion, decimal precio, DateTime fechaPublicacion, DateTime fechaVenta)
         {
             Id = id;

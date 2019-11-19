@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL;
 using Entidades;
+using System.Text.RegularExpressions;
 
 namespace Vista
 {
@@ -24,6 +25,7 @@ namespace Vista
         private void Form1_Load(object sender, EventArgs e)
         {
             inmobiliaria = new Inmobiliaria();
+            MostrarDGVinmuebles();
         }
 
         //ABMC.CT
@@ -31,9 +33,9 @@ namespace Vista
         {
             try
             {
-                Inmueble nuyevo = new Inmueble();
+                //Inmueble nuyevo = new Inmueble();
                 
-                inmobiliaria.AltaInmueble()
+                //inmobiliaria.AltaInmueble()
             }
             catch (Exception)
             {
@@ -70,6 +72,81 @@ namespace Vista
             catch (Exception)
             {
             }
+        }
+        //ALTA
+        private void button4_Click(object sender, EventArgs e)
+        {          
+            try
+            {
+                Regex pattern = new Regex(@"^(([A-Za-z]{3}[-]\d{3}))$");//[rango de numeros]{cantidad de numeros}
+                if (pattern.IsMatch(textBoxId.Text))
+                {
+                    string id = textBoxId.Text;/////////////codigo si esta bien
+                    Inmueble inmueble = new Inmueble(id,textBoxDIR.Text, decimal.Parse(textBoxprecio.Text),
+                        DateTime.Parse(textBoxFP.Text), DateTime.Parse(TXTBOXFV.Text));
+
+                    inmobiliaria.AltaInmueble(inmueble);
+                }
+                else
+                {
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+        //MOD
+        private void button5_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Inmueble inmuebleSelect = dataGridView1.SelectedRows[0].DataBoundItem as Inmueble;
+                Inmueble inmueble = new Inmueble(inmuebleSelect.Id, textBoxDIR.Text, decimal.Parse(textBoxprecio.Text),
+                DateTime.Parse(textBoxFP.Text), DateTime.Parse(TXTBOXFV.Text));
+
+                inmobiliaria.ModificacionInmueble(inmueble);
+                MostrarDGVinmuebles();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        //BAJA
+        private void button6_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Inmueble inmuebleSelect = dataGridView1.SelectedRows[0].DataBoundItem as Inmueble;
+
+                inmobiliaria.BajaInmueble(inmuebleSelect);
+                MostrarDGVinmuebles();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        //CONSULTA
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        public void MostrarDGVinmuebles()
+        {
+            inmobiliaria.CargarListaInmueble();
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = inmobiliaria.LI;
         }
     }
 }
