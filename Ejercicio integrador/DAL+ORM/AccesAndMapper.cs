@@ -22,9 +22,10 @@ namespace DAL_ORM
             DS = new DataSet();
             Adapter = new SqlDataAdapter("select * FROM Inmueble", ConectionString);
             ComandBuilder = new SqlCommandBuilder(Adapter);
-            Adapter.InsertCommand = ComandBuilder.GetInsertCommand();
+            Adapter.InsertCommand = ComandBuilder.GetUpdateCommand(); 
             Adapter.DeleteCommand = ComandBuilder.GetDeleteCommand();
             Adapter.UpdateCommand = ComandBuilder.GetUpdateCommand();
+
             Adapter.FillSchema(DS, SchemaType.Mapped);
             //con el fillSchema no hace falta poner la ky a mano
 
@@ -72,10 +73,16 @@ namespace DAL_ORM
             try
             {
                 DataRow DR=DS.Tables[0].Rows.Find(inmueble.Id);
-                DR[1] =inmueble.Direccion;
-                DR[2] = inmueble.Precio;
-                DR[3] = inmueble.FechaPublicacion;
-                DR[4] = inmueble.FechaVenta;
+                DR.ItemArray = inmueble.getArrayInmueble();
+                //DR[1] =inmueble.Direccion;
+                //DR[2] = inmueble.Precio;
+                //DR[3] = inmueble.FechaPublicacion;
+                //if (inmueble.FechaVenta.ToString()=="")
+                //{
+                   // DateTime? FVNull = null;
+                    //DR[4] = FVNull;
+                //}
+                
                 GuardarBd();
             }
             catch (Exception)
@@ -83,34 +90,61 @@ namespace DAL_ORM
             }
         }
 
-        public void ConsultaInmueble(string Query)
+        public List<Inmueble> ConsultaInmueble(string Query)
         {
+            List<Inmueble> LInmueble = new List<Inmueble>();
             try
             {
+                Adapter.SelectCommand.CommandText = Query;
+                DataTable dtfilter = new DataTable();
+                Adapter.Fill(dtfilter);
+                foreach (DataRow dr in dtfilter.Rows)
+                {
+                    DateTime? dtFV = null;
+                    if (dr[4].ToString() != "")
+                    {
+                        dtFV = (DateTime?)dr[4];
+                    }
+
+                    Inmueble inmueble = new Inmueble(
+                        dr[0].ToString(), dr[1].ToString(),
+                        (decimal)dr[2], (DateTime)dr[3], dtFV);
+
+                    LInmueble.Add(inmueble);
+                }
+
+                Adapter.SelectCommand.CommandText = "select * from Inmueble";
             }
             catch (Exception)
             {
             }
-
+            return LInmueble;
         }
         public List<Inmueble> GetListaInmueble()
         {
             List<Inmueble> LInmueble = new List<Inmueble>();
             try
             {
-                //Adapter.SelectCommand.CommandText="select * from Inmueble";
+                Adapter.SelectCommand.CommandText="select * from Inmueble";
                 Adapter.Fill(DS.Tables[0]);
                 foreach (DataRow dr in DS.Tables[0].Rows)
                 {
+                    DateTime? dtFV = null;
+                    if (dr[4].ToString()!="")
+                    {
+                        dtFV = (DateTime?)dr[4];
+                    }
+                    
                     Inmueble inmueble = new Inmueble(
                         dr[0].ToString(), dr[1].ToString(),
-                        (decimal)dr[2], (DateTime)dr[3], (DateTime)dr[4]);
+                        (decimal)dr[2], (DateTime)dr[3], dtFV);
 
                     LInmueble.Add(inmueble);
                 }
             }
             catch (Exception)
             {
+
             }
             return LInmueble;
         }

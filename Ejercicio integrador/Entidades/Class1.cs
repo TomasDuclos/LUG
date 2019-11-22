@@ -1,8 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
+using System.Drawing.Text;
 
 namespace Entidades
 {
@@ -31,6 +37,13 @@ namespace Entidades
                      
             return arrayinmueble;
         }
+    }
+    public class ProyeccionGDIinmueble
+    {
+        public int Anio{get;set;}
+        public decimal GananciaIVendidos { get; set; }
+        public float PorcSobreGananciaTotalVendido { get; set; }
 
+        public SolidBrush sb { get; set; }
     }
 }

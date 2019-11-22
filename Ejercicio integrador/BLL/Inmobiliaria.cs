@@ -56,7 +56,8 @@ namespace BLL
         {
             try
             {
-                //List<Inmueble> a=new List<Inmueble>();
+                //List<Inmueble> listaFiltrada=new List<Inmueble>();
+                
                 accesDB.ConsultaInmueble(texto);
             }
             catch (Exception)
@@ -76,5 +77,67 @@ namespace BLL
             }
             return LI;
         }
+        public List<Inmueble> BusquedaFiltro(string texto)
+        {
+            List<Inmueble> listaFiltrada=new List<Inmueble>();
+            try
+            {
+               
+                string Query = "select * from Inmueble " +
+                    "where Id like '"+@texto+"%'";
+
+                listaFiltrada = accesDB.ConsultaInmueble(Query);
+            }
+            catch (Exception)
+            {
+
+            }
+            return listaFiltrada;
+        }
+
+        //GDI PART CALCAULAR PORCENTAJES
+        public List<ProyeccionGDIinmueble> GetListaProyeccionVendidos()
+        {
+            List<ProyeccionGDIinmueble> LProyeccion = new List<ProyeccionGDIinmueble>();
+            decimal TotalPrecio = 0;
+
+            List<Inmueble> listaFiltrada = accesDB.ConsultaInmueble(@"select *
+                                    from Inmueble
+                                    where FechaVenta IS not NULL ");
+
+            foreach (Inmueble inmueble in listaFiltrada)
+            {
+                ProyeccionGDIinmueble proyeccion = new ProyeccionGDIinmueble();
+
+                DateTime dt = (DateTime)inmueble.FechaVenta;
+                if (!LProyeccion.Exists(x=>x.Anio==dt.Year) || LProyeccion.Count==0)
+                {
+                    proyeccion.Anio=dt.Year;
+                    LProyeccion.Add(proyeccion);
+                }
+
+                TotalPrecio += (inmueble.Precio);
+            }
+            foreach (ProyeccionGDIinmueble Proyeccion in LProyeccion)
+            {
+
+                foreach (Inmueble inmueble in listaFiltrada)
+                {
+                    DateTime dt = (DateTime)inmueble.FechaVenta;
+                    int Anio = dt.Year;
+                    if (Proyeccion.Anio == Anio)
+                    {
+                        Proyeccion.GananciaIVendidos += inmueble.Precio;
+                        Proyeccion.PorcSobreGananciaTotalVendido =
+                            (float)(((Proyeccion.GananciaIVendidos) / TotalPrecio))*100;
+                    }
+                }
+            }
+            return LProyeccion;
+        }
+
+
+
     }
+
 }

@@ -88,7 +88,7 @@ namespace GDI_Practica
         {
             LVN = new List<VistaNumeros>();
             int a = 0;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 10; i++)
             {
                 VistaNumeros Vnum = new VistaNumeros();
                 Random random = new Random(DateTime.Now.Millisecond);
@@ -109,7 +109,7 @@ namespace GDI_Practica
         public List<VistaNumeros> RandomNumeros(int cont)
         {
             Random a = new Random();
-            int num = a.Next(0, 9);
+            int num = a.Next(0, 10);
             calcularPorcentaje(num, cont);
             return LVN;
         }
@@ -161,8 +161,6 @@ namespace GDI_Practica
             int i = 500;
             //rectangulo blanco
             G.FillRectangle(sb, i,10, 45*LVN.Count, 320);
-
-
 
             foreach (VistaNumeros vn in LVN)
             {

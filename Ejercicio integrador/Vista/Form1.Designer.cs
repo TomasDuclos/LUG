@@ -42,18 +42,23 @@
             this.textBoxId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.TXTBOXFV = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonGraficar = new System.Windows.Forms.Button();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.textBoxFiltro = new System.Windows.Forms.TextBox();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 357);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 513);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(504, 190);
+            this.dataGridView1.Size = new System.Drawing.Size(730, 190);
             this.dataGridView1.TabIndex = 28;
             // 
             // button6
@@ -166,22 +171,53 @@
             this.TXTBOXFV.Size = new System.Drawing.Size(159, 22);
             this.TXTBOXFV.TabIndex = 60;
             // 
-            // button1
+            // buttonGraficar
             // 
-            this.button1.Location = new System.Drawing.Point(12, 246);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(258, 25);
-            this.button1.TabIndex = 62;
-            this.button1.Text = "CONSULTA";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonGraficar.Location = new System.Drawing.Point(12, 246);
+            this.buttonGraficar.Name = "buttonGraficar";
+            this.buttonGraficar.Size = new System.Drawing.Size(258, 25);
+            this.buttonGraficar.TabIndex = 62;
+            this.buttonGraficar.Text = "GDI";
+            this.buttonGraficar.UseVisualStyleBackColor = true;
+            this.buttonGraficar.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(12, 307);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.RowTemplate.Height = 24;
+            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView2.Size = new System.Drawing.Size(730, 190);
+            this.dataGridView2.TabIndex = 63;
+            // 
+            // textBoxFiltro
+            // 
+            this.textBoxFiltro.Location = new System.Drawing.Point(583, 279);
+            this.textBoxFiltro.Name = "textBoxFiltro";
+            this.textBoxFiltro.Size = new System.Drawing.Size(159, 22);
+            this.textBoxFiltro.TabIndex = 64;
+            this.textBoxFiltro.TextChanged += new System.EventHandler(this.textBoxFiltro_TextChanged);
+            // 
+            // dataGridView3
+            // 
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Location = new System.Drawing.Point(765, 513);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.RowTemplate.Height = 24;
+            this.dataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView3.Size = new System.Drawing.Size(730, 190);
+            this.dataGridView3.TabIndex = 65;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1468, 559);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(1551, 715);
+            this.Controls.Add(this.dataGridView3);
+            this.Controls.Add(this.textBoxFiltro);
+            this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.buttonGraficar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.TXTBOXFV);
             this.Controls.Add(this.button6);
@@ -200,6 +236,8 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -221,7 +259,10 @@
         private System.Windows.Forms.TextBox textBoxId;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox TXTBOXFV;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonGraficar;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.TextBox textBoxFiltro;
+        private System.Windows.Forms.DataGridView dataGridView3;
     }
 }
 
