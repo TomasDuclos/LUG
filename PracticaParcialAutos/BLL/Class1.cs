@@ -76,7 +76,7 @@ namespace BLL
             }
             catch (Exception)
             {
-                throw;
+               throw;
             }
             return ListaPro;
         }
